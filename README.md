@@ -2,6 +2,8 @@
 
 A simple bridge
 
-please create your own branch before starting you work
+Create branch from development
 
-also leave one blank line in the end of every file 
+Rebase/merge your own branch to development after done your work
+
+Also leave one blank line in the end of every file 
