@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-  <form action='/login/' method='POST' role="form">{% csrf_token %}
+  <form action='/register/' method='POST' role="form">{% csrf_token %}
     <p>Welcome to Our Land!</p>
     <div class="form-group">
       <label for="usernameText">Username:</label>
@@ -11,6 +11,5 @@
       <input type='password' name='password' class="form-control" id='passwordText'></br>
     </div>
     <input type='submit' class="btn btn-default" value='Submit'>
-    <a href="/signup/">Signup</a>
   </form>
 {% endblock %}
