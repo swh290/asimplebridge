@@ -3,9 +3,8 @@ from django.http import HttpResponse, HttpResponseForbidden, HttpResponseNotFoun
 from django.contrib.auth.models import User
 
 def home(request):
-  print request.user
-  print request.user.is_authenticated()
   if request.user.is_authenticated():
-    return HttpResponse("Hello, world. First Page!")
+    userName = request.user
+    return render(request, 'homepage.html', locals())
   else:
-    return HttpResponse("Need Log In!")
+    return render(request, 'login.html', locals())

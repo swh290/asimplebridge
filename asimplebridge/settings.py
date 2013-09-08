@@ -1,4 +1,6 @@
 # Django settings for asimplebridge project.
+import os
+
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -6,6 +8,8 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
+
+PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
 MANAGERS = ADMINS
 
@@ -69,6 +73,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    os.path.join(PROJECT_PATH, "static"),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -111,6 +116,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    "../asimplebridge/asimplebridge/templates"
 )
 
 INSTALLED_APPS = (

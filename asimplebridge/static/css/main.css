@@ -1,0 +1,14 @@
+
+.l_content
+{
+  left: 40%;
+  top: 50px;
+  position: relative;
+}
+
+form
+{
+  position: absolute;
+  top: 50px;
+}
+
