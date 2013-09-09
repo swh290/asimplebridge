@@ -31,10 +31,9 @@ def register(request):
   if request.POST:
     userName = request.POST.get('username')
     password =request.POST.get('password')
-    user = User.objects.create(username=userName)
-    user.set_password(password)
-    user.save()
-    print 'save'
-    return render(request, 'login.html', locals())
-  print 'fail'
-  return HttpResponseRedirect("signup")
+    if not User.objects.filter(username=userName).exists():
+      user = User.objects.create(username=userName)
+      user.set_password(password)
+      user.save()
+      return render(request, 'login.html', locals())
+  return HttpResponseRedirect("/signup")
