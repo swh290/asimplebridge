@@ -23,7 +23,7 @@ form
 
 .l_logout
 {
-  margin-top: 15px;
+  
 }
 
 .l_logout:hover
@@ -68,4 +68,10 @@ footer
 {
   color: wheat;
   margin: 5px;
+}
+
+.header-text
+{
+  color: white;
+  margin: 15px 7px 0 0;
 }

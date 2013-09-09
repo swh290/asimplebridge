@@ -17,8 +17,7 @@ def login(request):
       if user.is_active:
         userName = request.user
         auth.login(request, user)
-        return HttpResponseRedirect("/")
-  return render(request, 'login.html', locals())
+  return HttpResponseRedirect("/")
 
 def signup(request):
   return render(request, 'signup.html', locals())
