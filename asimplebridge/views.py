@@ -17,8 +17,7 @@ def login(request):
       if user.is_active:
         userName = request.user
         auth.login(request, user)
-        return render(request, 'homepage.html', locals())
-
+        return HttpResponseRedirect("/")
   return render(request, 'login.html', locals())
 
 def signup(request):
@@ -26,7 +25,7 @@ def signup(request):
 
 def logout(request):
   auth.logout(request)
-  return render(request, 'login.html', locals())
+  return HttpResponseRedirect("/")
 
 def register(request):
   if request.POST:
@@ -36,6 +35,6 @@ def register(request):
     user.set_password(password)
     user.save()
     print 'save'
-    return HttpResponseRedirect("home")
+    return render(request, 'login.html', locals())
   print 'fail'
   return HttpResponseRedirect("signup")
