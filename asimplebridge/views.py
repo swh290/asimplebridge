@@ -31,8 +31,9 @@ def register(request):
   if request.POST:
     userName = request.POST.get('username')
     password =request.POST.get('password')
-    if not User.objects.filter(username=userName).exists():
-      user = User.objects.create(username=userName)
+    email = request.POST.get('email')
+    if not User.objects.filter(username=userName).exists() and not User.objects.filter(email=email).exists():
+      user = User.objects.create(username=userName, email=email)
       user.set_password(password)
       user.save()
       return render(request, 'login.html', locals())
