@@ -14,5 +14,5 @@
 <h2>heroku for Django</h2>
 
 <p>
-  <a href="https://devcenter.heroku.com/articles/getting-started-with-django#prerequisites">https://devcenter.heroku.com/articles/getting-started-with-django#prerequisites</a>
+  <a href="https://devcenter.heroku.com/articles/getting-started-with-django">https://devcenter.heroku.com/articles/getting-started-with-django</a>
 </p>
