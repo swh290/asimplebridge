@@ -1,7 +1,9 @@
+import json
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseForbidden, HttpResponseNotFound, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib import auth
+from django.views.decorators.csrf import csrf_exempt
 
 def home(request):
   if request.user.is_authenticated():
@@ -37,3 +39,16 @@ def register(request):
       user.save()
       return render(request, 'login.html', locals())
   return HttpResponseRedirect("/signup")
+
+@csrf_exempt
+def fbRegister(request):
+  response_data = {}
+  response_data['success'] = 'false'
+  print request.method
+  if request.method == 'POST':
+    print request.is_ajax()
+    print request.POST.get('accessToken')
+    print request.POST.get('fbID')
+    response_data['success'] = 'true'
+
+  return HttpResponse( json.dumps(response_data))
