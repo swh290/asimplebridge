@@ -16,3 +16,7 @@
 <p>
   <a href="https://devcenter.heroku.com/articles/getting-started-with-django">https://devcenter.heroku.com/articles/getting-started-with-django</a>
 </p>
+
+<p>
+  <a href="https://pypi.python.org/pypi/django-facebook/2.1.2">https://pypi.python.org/pypi/django-facebook/2.1.2</a>
+</p>
