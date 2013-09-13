@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from views import *
+from account.views import *
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -20,5 +21,5 @@ urlpatterns = patterns('',
     url(r'^signup/', signup, name='signup'),
     url(r'^logout/', logout, name='logout'),
     url(r'^register/', register, name='register'),
-    url(r'^fbRegister', fbRegister, name='fbRegister'),
+    url(r'^fbRegister/', fbRegister, name='fbRegister'),
 )

@@ -27,22 +27,30 @@
   });
 
   FB.login(function(response){
+    if(response.status == 'connected'){
+      FB.api('/me', function(dataResponse) {
+        console.log(dataResponse);
         $.ajax({
-          type: 'POST',
-          url: '/fbRegister',
-          dataType: 'json',
-          data: {
-            accessToken: response.authResponse.accessToken,
-            fbID: response.authResponse.userID,
-          },
-          success: function(data){
-            console.log(data);
-          },
-          error: function(err){
-            console.log(err);
-          }
-        });
+            type: 'POST',
+            url: '/fbRegister/',
+            dataType: 'json',
+            data: {
+              fbAccessToken: response.authResponse.accessToken,
+              fbID: response.authResponse.userID,
+              first_name: dataResponse.first_name,
+              last_name: dataResponse.last_name,
+              username: dataResponse.username,
+            },
+            success: function(data){
+              console.log(data);
+            },
+            error: function(err){
+              console.log(err);
+            }
+          });
       });
+    }
+  });
   };
 
   // Load the SDK asynchronously
