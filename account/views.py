@@ -19,9 +19,11 @@ def fbRegister(request):
     last_name = request.POST.get("last_name")
     username = request.POST.get("username")
     user = User.objects.create(username=username)
+    user.first_name = first_name
+    user.last_name = last_name
     user.set_password("123456")
     user.save()
-    create_userProfile(user, fbId, fbAccessToken, first_name, last_name, username)
+    create_userProfile(user, fbId, fbAccessToken)
     response_data['success'] = 'true'
 
   return HttpResponse( json.dumps(response_data))
