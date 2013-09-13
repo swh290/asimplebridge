@@ -39,16 +39,3 @@ def register(request):
       user.save()
       return render(request, 'login.html', locals())
   return HttpResponseRedirect("/signup")
-
-@csrf_exempt
-def fbRegister(request):
-  response_data = {}
-  response_data['success'] = 'false'
-  print request.method
-  if request.method == 'POST':
-    print request.is_ajax()
-    print request.POST.get('accessToken')
-    print request.POST.get('fbID')
-    response_data['success'] = 'true'
-
-  return HttpResponse( json.dumps(response_data))
