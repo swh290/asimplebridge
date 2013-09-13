@@ -21,9 +21,17 @@ def fbRegister(request):
     user = User.objects.create(username=username)
     user.first_name = first_name
     user.last_name = last_name
-    user.set_password("123456")
+    # need to generate hash password
+    password = '123456'
+    user.set_password(password)
     user.save()
     create_userProfile(user, fbId, fbAccessToken)
+
+    loginUser = auth.authenticate(username=username, password=password)
+    if loginUser is not None:
+      if loginUser.is_active:
+        auth.login(request, loginUser)
+
     response_data['success'] = 'true'
 
   return HttpResponse( json.dumps(response_data))
