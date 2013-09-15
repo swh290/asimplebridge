@@ -8,30 +8,40 @@ from django.contrib.auth.models import User
 from account.models import *
 
 @csrf_exempt
-def fbRegister(request):
+def fbLogin(request):
   response_data = {}
   response_data['success'] = 'false'
-  print request.method
   if request.method == 'POST':
     fbAccessToken = request.POST.get('fbAccessToken')
     fbId = request.POST.get('fbID')
     first_name = request.POST.get("first_name")
     last_name = request.POST.get("last_name")
     username = request.POST.get("username")
-    user = User.objects.create(username=username)
-    user.first_name = first_name
-    user.last_name = last_name
     # need to generate hash password
     password = '123456'
-    user.set_password(password)
-    user.save()
-    create_userProfile(user, fbId, fbAccessToken)
 
-    loginUser = auth.authenticate(username=username, password=password)
-    if loginUser is not None:
-      if loginUser.is_active:
-        auth.login(request, loginUser)
+    user = UserProfile.objects.filter(fbId = fbId)
+    print user
+    if len(user) == 0:
+      print 'register'
+      user = fbRegister(user, fbId, fbAccessToken, username, password, first_name, last_name)
+    else:
+      loginUser = auth.authenticate(username=username, password=password)
+      if loginUser is not None:
+        if loginUser.is_active:
+          auth.login(request, loginUser)
 
-    response_data['success'] = 'true'
+      response_data['success'] = 'true'
 
   return HttpResponse( json.dumps(response_data))
+
+def fbRegister(user, fbId, fbAccessToken, username, password, first_name, last_name):
+  user = User.objects.create(username=username)
+  user.first_name = first_name
+  user.last_name = last_name
+  
+  user.set_password(password)
+  user.save()
+  create_userProfile(user, fbId, fbAccessToken)
+  return user
+

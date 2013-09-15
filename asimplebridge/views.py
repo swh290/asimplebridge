@@ -10,6 +10,7 @@ def home(request):
     userName = request.user
     return render(request, 'homepage.html', locals())
   else:
+    print 'go to login'
     return render(request, 'login.html', locals())
 
 def login(request):

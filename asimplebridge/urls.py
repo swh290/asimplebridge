@@ -21,5 +21,5 @@ urlpatterns = patterns('',
     url(r'^signup/', signup, name='signup'),
     url(r'^logout/', logout, name='logout'),
     url(r'^register/', register, name='register'),
-    url(r'^fbRegister/', fbRegister, name='fbRegister'),
+    url(r'^fbLogin/', fbLogin, name='fbLogin'),
 )
