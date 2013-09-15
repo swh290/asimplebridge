@@ -27,7 +27,6 @@
   });
   
   FB.Event.subscribe('auth.authResponseChange', function(response) {
-    console.log(response.status);
     if (response.status === 'connected') {
       testAPI(response);
     } else if (response.status === 'not_authorized') {
@@ -50,29 +49,26 @@
   // Here we run a very simple test of the Graph API after login is successful. 
   // This testAPI() function is only called in those cases. 
   function testAPI(response) {
-    console.log(response);
-    FB.api('/me', function(dataResponse) {
-      console.log(dataResponse);
-      $.ajax({
-            type: 'POST',
-            url: '/fbLogin/',
-            dataType: 'json',
-            data: {
-              fbAccessToken: response.authResponse.accessToken,
-              fbID: response.authResponse.userID,
-              first_name: dataResponse.first_name,
-              last_name: dataResponse.last_name,
-              username: dataResponse.username,
-            },
-            success: function(data){
-              console.log(data);
-              document.location.href = '/';
-            },
-            error: function(err){
-              console.log(err);
-            }
-          });
-    });
+      FB.api('/me', function(dataResponse) {
+        $.ajax({
+              type: 'POST',
+              url: '/fbLogin/',
+              dataType: 'json',
+              data: {
+                fbAccessToken: response.authResponse.accessToken,
+                fbID: response.authResponse.userID,
+                first_name: dataResponse.first_name,
+                last_name: dataResponse.last_name,
+                username: dataResponse.username,
+              },
+              success: function(data){
+                document.location.href = '/';
+              },
+              error: function(err){
+                console.log(err);
+              }
+            });
+      });
   }
 </script>
 <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>

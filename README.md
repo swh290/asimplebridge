@@ -20,3 +20,7 @@
 <p>
   <a href="https://pypi.python.org/pypi/django-facebook/2.1.2">https://pypi.python.org/pypi/django-facebook/2.1.2</a>
 </p>
+
+<p>
+  <h1>Test account needed to be add in App Tester</h1>
+</p>
