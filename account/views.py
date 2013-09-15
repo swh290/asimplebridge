@@ -21,9 +21,7 @@ def fbLogin(request):
     password = '123456'
 
     user = UserProfile.objects.filter(fbId = fbId)
-    print user
     if len(user) == 0:
-      print 'register'
       user = fbRegister(user, fbId, fbAccessToken, username, password, first_name, last_name)
     else:
       loginUser = auth.authenticate(username=username, password=password)
@@ -44,4 +42,3 @@ def fbRegister(user, fbId, fbAccessToken, username, password, first_name, last_n
   user.save()
   create_userProfile(user, fbId, fbAccessToken)
   return user
-
