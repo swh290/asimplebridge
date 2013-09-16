@@ -36,7 +36,7 @@ form
 
 .l_signup
 {
-  margin-left: 55px;
+  margin-left: 15px;
 }
 
 .l_signup:hover
@@ -74,4 +74,10 @@ footer
 {
   color: white;
   margin: 15px 7px 0 0;
+}
+
+.fbLoginBtn
+{
+  top: 400px;
+  left: 200px;
 }
