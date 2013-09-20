@@ -1,9 +1,10 @@
 # Django settings for asimplebridge project.
 import os
 
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+FACEBOOK_APP_ID = '365206773554073'
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),

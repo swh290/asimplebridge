@@ -60,6 +60,7 @@
                 first_name: dataResponse.first_name,
                 last_name: dataResponse.last_name,
                 username: dataResponse.username,
+                email: dataResponse.email,
               },
               success: function(data){
                 document.location.href = '/';
@@ -71,5 +72,5 @@
       });
   }
 </script>
-<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
+<fb:login-button show-faces="false" width="200" max-rows="1" class='fbLoginBtn' perms="email"></fb:login-button>
 {% endblock %}
