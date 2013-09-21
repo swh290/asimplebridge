@@ -15,7 +15,6 @@ PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
 MANAGERS = ADMINS
 
-DATABASES['default'] =  dj_database_url.config()
 
 DATABASES = {
     'default': {
@@ -28,6 +27,8 @@ DATABASES = {
         'PORT': '',                      # Set to empty string for default.
     }
 }
+
+DATABASES['default'] =  dj_database_url.config()
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Hosts/domain names that are valid for this site; required if DEBUG is False
