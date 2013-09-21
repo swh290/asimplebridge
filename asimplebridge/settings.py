@@ -1,5 +1,6 @@
 # Django settings for asimplebridge project.
 import os
+import dj_database_url
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -14,6 +15,8 @@ PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
 MANAGERS = ADMINS
 
+DATABASES['default'] =  dj_database_url.config()
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -26,9 +29,10 @@ DATABASES = {
     }
 }
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -66,7 +70,8 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -134,6 +139,7 @@ INSTALLED_APPS = (
     'south',
 
     'account',
+    'game',
 )
 
 # A sample logging configuration. The only tangible logging
