@@ -77,7 +77,7 @@ STATIC_ROOT= os.path.join(PROJECT_ROOT,'staticfiles/')
 STATIC_URL = '/static/'
 # Additional locations of static files
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, "asimplebridge/static"),
+    # os.path.join(PROJECT_ROOT, "asimplebridge/static"),
     os.path.join(PROJECT_ROOT,'static/'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
