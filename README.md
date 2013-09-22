@@ -28,7 +28,6 @@
 <p>
   <h1>Heroku url</h1>
   <a href="http://asimplebridge.herokuapp.com/">http://asimplebridge.herokuapp.com/</a>
-  <h2>Don't merge from master, some problems not solved</h2>
 </p>
 
   
