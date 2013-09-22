@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 def home(request):
   if request.user.is_authenticated():
     userName = request.user
@@ -12,6 +13,7 @@ def home(request):
   else:
     return render(request, 'login.html', locals())
 
+@csrf_exempt
 def login(request):
   if request.POST:
     user = auth.authenticate(username=request.POST.get('username'), password=request.POST.get('password'))
@@ -28,6 +30,7 @@ def logout(request):
   auth.logout(request)
   return HttpResponseRedirect("/")
 
+@csrf_exempt
 def register(request):
   if request.POST:
     userName = request.POST.get('username')
