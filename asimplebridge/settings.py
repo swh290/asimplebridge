@@ -74,7 +74,7 @@ MEDIA_URL = ''
 STATIC_ROOT= os.path.join(PROJECT_ROOT,'staticfiles/')
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
-STATIC_URL = '/static/'
+STATIC_URL = '/asimplebridge/static/'
 # Additional locations of static files
 STATICFILES_DIRS = (
     # os.path.join(PROJECT_ROOT, "asimplebridge/static"),
