@@ -28,6 +28,8 @@
 <p>
   <h1>Heroku url</h1>
   <a href="http://asimplebridge.herokuapp.com/">http://asimplebridge.herokuapp.com/</a>
+  <h1>App on Facebook</h1>
+  <a href="https://apps.facebook.com/365206773554073/">https://apps.facebook.com/365206773554073/</a>
 </p>
 
   
