@@ -1,3 +1,8 @@
+import random
+suitType = ('CLUB', 'DIMOND', 'HEART', 'SPADE')
+bidType = ('CLUB', 'DIMOND', 'HEART', 'SPADE', 'NOTRUMP')
+positionType = ('NORTH', 'SOUTH', 'EAST', 'WEST')
+
 class Card(object):
 	suit = None
 	rank = None
@@ -8,23 +13,47 @@ class Card(object):
 	def __str__(self):
 		return "suit:" + self.suit + " rank:" + str(self.rank)
 
+	def __lt__(self, other):
+		if self.suit == other.suit:
+			return self.rank < other.rank
+		else:
+			return suitType.index(self.suit) < suitType.index(other.suit)
+
+cards = []
+for t in suitType:
+	for i in range(13):
+		cards.append(Card(i, t))
+random.shuffle(cards)
+
 class Player(object):
 	position = None
-	handCard = None
-	def __init__(self, position = "None", handCard = []):
+	handCard = []
+	def __init__(self, position = "None"):
 		self.position = position
-		self.handCard = handCard
+		#self.handCard = handCard
 
 	def __str__(self):
 		return "position:" + self.position + " handCard:" + str(self.handCard)
 
 class Contract(object):
 	"""docstring for Contract"""
-	def __init__(self, suit, rank):
+	position = None
+	bid = None
+	rank = None
+	isPass = False
+	def __init__(self, position, bid, rank, isPass = False):
 		super(Contract, self).__init__()
-		self.suit = suit
+		self.position = position
+		self.bid = bid
 		self.rank = rank
-		isPass = False
+		self.isPass = isPass
+
+	def islargerThan(other):
+		if other.isPass: return True
+		if this.rank != other.rank:
+			return self.rank > other.rank
+		else: return bidType.index(self.bid) > bidType.index(other.bid)
+
 
 class Move(object):
 	position = None
@@ -42,29 +71,25 @@ class State(object):
 	NSTrickCurrent = 0
 	EWTrickCurrent = 0
 	turn = None
+	bidTurn = None
+	bidStart = "NORTH"
 	suitThisTurn = None
 	trump = None
-	contract = Contract("None", 0)
+	contract = None
+	bidding = None
 	gameResult = None
 	cardsOnTable = []
+	contracts = {'NORTH': None, 'SOUTH': None, 'EAST': None, 'WEST': None}
+	passCount = 0
 	playerN = Player("NORTH")
 	playerS = Player("SOUTH")
 	playerE = Player("EAST")
 	playerW = Player("WEST")
 	playerDict = {'NORTH': playerN, 'SOUTH': playerS, 'EAST': playerE, 'WEST': playerW}
-	def __init__(self, playerN = Player(), playerS = Player()
-				, playerE = Player(), playerW = Player()):
+	def __init__(self):
 		super(State, self).__init__()
-		self.playerN = playerN
-		self.playerS = playerS
-		self.playerE = playerE
-		self.playerW = playerW
-		
-		
-
 
 if __name__ == "__main__" :
-	card1 = Card(3)
-	card2 = Card(5, "Club")
-	print(card1.__str__())
-	print(card2.__str__())
+	
+	for c in cards:
+		print c.suit + "  " + str(c.rank)
