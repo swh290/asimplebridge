@@ -11,9 +11,7 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
-# PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-# PROJECT_DIR = os.path.join(PROJECT_ROOT,'../asimplebridge')
 
 MANAGERS = ADMINS
 
@@ -77,7 +75,6 @@ STATIC_ROOT= os.path.join(PROJECT_ROOT,'staticfiles/')
 STATIC_URL = '/asimplebridge/static/'
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # os.path.join(PROJECT_ROOT, "asimplebridge/static"),
     os.path.join(PROJECT_ROOT,'static/'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
