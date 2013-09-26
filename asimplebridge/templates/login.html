@@ -28,11 +28,11 @@
   
   FB.Event.subscribe('auth.authResponseChange', function(response) {
     if (response.status === 'connected') {
-      testAPI(response);
+        testAPI(response);      
     } else if (response.status === 'not_authorized') {
-      FB.login({scope: 'email'});
+      FB.login({scope: 'email,picture'});
     } else {
-      FB.login({scope: 'email'});
+      FB.login({scope: 'email,picture'});
     }
   });
   };
@@ -50,27 +50,30 @@
   // This testAPI() function is only called in those cases. 
   function testAPI(response) {
       FB.api('/me', function(dataResponse) {
-        $.ajax({
-              type: 'POST',
-              url: '/fbLogin/',
-              dataType: 'json',
-              data: {
-                fbAccessToken: response.authResponse.accessToken,
-                fbID: response.authResponse.userID,
-                first_name: dataResponse.first_name,
-                last_name: dataResponse.last_name,
-                username: dataResponse.username,
-                email: dataResponse.email,
-              },
-              success: function(data){
-                document.location.href = '/';
-              },
-              error: function(err){
-                console.log(err);
-              }
-            });
+        FB.api('/me/picture?width=180&height=180',function(data){
+          $.ajax({
+                type: 'POST',
+                url: '/fbLogin/',
+                dataType: 'json',
+                data: {
+                  fbAccessToken: response.authResponse.accessToken,
+                  fbID: response.authResponse.userID,
+                  first_name: dataResponse.first_name,
+                  last_name: dataResponse.last_name,
+                  username: dataResponse.username,
+                  email: dataResponse.email,
+                  picture: data.data.url,
+                },
+                success: function(data){
+                  document.location.href = '/';
+                },
+                error: function(err){
+                  console.log(err);
+                }
+              });
+        });
       });
   }
 </script>
-<fb:login-button show-faces="false" width="200" max-rows="1" class='fbLoginBtn' perms="email"></fb:login-button>
+<fb:login-button show-faces="false" width="200" max-rows="1" class='fbLoginBtn'></fb:login-button>
 {% endblock %}

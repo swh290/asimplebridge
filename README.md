@@ -1,35 +1,24 @@
-##
-<h1>A simple bridge</h1>
 
-<p>BootStrap</p>
+#A simple bridge
 
-<a href="http://getbootstrap.com/">Bootstrap</a>
+BootStrap
 
-<h2>Create branch from development</h2>
+[Bootstrap](http://getbootstrap.com/)
 
-<h2>Rebase/merge your own branch to development after done your work</h2>
+###Create branch from development
+###Rebase/merge your own branch to development after done your work
+###Also leave one blank line in the end of every file
+###heroku for Django#
 
-<h2>Also leave one blank line in the end of every file </h2>
 
-<h2>heroku for Django</h2>
+[https://devcenter.heroku.com/articles/getting-started-with-django](https://devcenter.heroku.com/articles/getting-started-with-django)
 
-<p>
-  <a href="https://devcenter.heroku.com/articles/getting-started-with-django">https://devcenter.heroku.com/articles/getting-started-with-django</a>
-</p>
 
-<p>
-  <a href="https://pypi.python.org/pypi/django-facebook/2.1.2">https://pypi.python.org/pypi/django-facebook/2.1.2</a>
-</p>
+[https://pypi.python.org/pypi/django-facebook/2.1.2](https://pypi.python.org/pypi/django-facebook/2.1.2)
 
-<p>
-  <h1>Test account needed to be add in App Tester</h1>
-</p>
+###Test account needed to be add in App Tester</h1>
 
-<p>
-  <h1>Heroku url</h1>
-  <a href="http://asimplebridge.herokuapp.com/">http://asimplebridge.herokuapp.com/</a>
-  <h1>App on Facebook</h1>
-  <a href="https://apps.facebook.com/365206773554073/">https://apps.facebook.com/365206773554073/</a>
-</p>
-
-  
+###Heroku url
+[http://asimplebridge.herokuapp.com/](http://asimplebridge.herokuapp.com/)
+###App on Facebook
+[https://apps.facebook.com/365206773554073/](https://apps.facebook.com/365206773554073/)

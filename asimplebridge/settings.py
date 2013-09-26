@@ -6,6 +6,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 FACEBOOK_APP_ID = '365206773554073'
+FACEBOOK_SECRET = '5ca8b3133192a1f25a8ab1a07db17b1c'
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
