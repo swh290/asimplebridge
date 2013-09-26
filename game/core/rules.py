@@ -3,14 +3,15 @@ from utils import *
 def makeMove(state, move):
 	if state.gameResult is not None:
 		return # throw exception
-	if state.turn != move.turn:
+	if state.turn != move.position:
 		return # throw exception
 	nextCard = move.card
 	position = move.position
 	player = state.playerDict[position]
 	onTable = state.cardsOnTable
-	onTable.append(move)
-	cardCounts = len[onTable]
+	if nextCard not in player.handCard:
+		return # throw exception
+	cardCounts = len(onTable)
 	if cardCounts == 0:
 		state.suitThisTurn = nextCard.suit
 	if nextCard.suit != state.suitThisTurn:
@@ -20,10 +21,10 @@ def makeMove(state, move):
 	onTable.append(move)
 	player.handCard.remove(nextCard)
 	state.turn = getLeftPlayer(state.turn)
-	cardCounts = len[onTable]
+	cardCounts = len(onTable)
 	if cardCounts == 4: #clean table and next round
 		winner = None
-		for m in cardsOnTable:
+		for m in onTable:
 			c = m.card
 			if c.suit == state.suitThisTurn:
 				if winner is None:
@@ -32,11 +33,11 @@ def makeMove(state, move):
 					w = winner.card
 					if c.rank > w.rank:
 						winner = m
-		for m in cardsOnTable:
+		for m in onTable:
 			c = m.card
-			if c.suit == state.trump:
+			if c.suit == state.contract.bid:
 				w = winner.card
-				if w.suit != state.trump:
+				if w.suit != state.contract.bid:
 					winner = m
 				elif c.rank > w.rank:
 					winner = m
@@ -49,7 +50,7 @@ def makeMove(state, move):
 			state.EWTrickCurrent += 1
 			if state.EWTrickCurrent == state.NSTrickNeeded:
 				state.gameResult = "EW_WIN"
-		cardsOnTable[:] = []
+		onTable[:] = []
 		state.suitThisTurn = None
 		state.turn = winPos
 
@@ -62,20 +63,24 @@ def dealer(state):
 	state.bidTurn = None
 	state.bidStart = getRightPlayer(state.bidStart)
 	state.suitThisTurn = None
-	state.trump = None
+	state.bidding = None
 	state.contract = None
+	state.passCount = 0
 	for k,v in state.contracts.iteritems():
 		v = None
 	state.gameResult = None
 	state.cardsOnTable[:] = []
 	random.shuffle(cards)
+	cards.sort()
+	while cardIsFail(cards):
+		random.shuffle(cards)
 	for i in range(4):
 		player = state.playerDict.get(positionType[i])
-		handCard = player.handCard
-		handCard[:] = []
-		for j in range(13):
-			handCard.append(cards[i + 4*j])
-		handCard.sort()
+		player.handCard[:] = []
+		player.handCard = cards[i*13:(i+1)*13]
+		
+		player.handCard.sort()
+	
 		
 		
 
@@ -84,6 +89,8 @@ def makeBid(state, contract):
 		return # throw exception
 	contracts = state.contracts
 	position = contract.position
+	if state.bidTurn is None:
+		state.bidTurn = state.bidStart
 	if position != state.bidTurn:
 		return # throw exception
 	bid = contract.bid
@@ -93,6 +100,7 @@ def makeBid(state, contract):
 		state.passCount += 1
 		if state.passCount == 3 and state.bidding is not None:
 			state.contract = state.bidding
+			state.turn = position
 			state.passCount = 0
 		if state.passCount == 4:
 			dealer(state)
@@ -102,8 +110,8 @@ def makeBid(state, contract):
 			state.bidding = contract
 		else: 
 			return # throw exception
-
 	contracts[position] = contract
+	state.bidTurn = getRightPlayer(state.bidTurn)
 		
 
 def getRightPlayer(pos):
@@ -124,6 +132,25 @@ def getLeftPlayer(pos):
 		return 'WEST'
 	else: return 'NORTH'
 	
+def cardIsFail(cards):
+	def getPoint(rank):
+		if rank == 9:
+			return 1
+		elif rank == 10:
+			return 2
+		elif rank == 11:
+			return 3
+		elif rank == 12:
+			return 4
+		else:
+			return 0
+	for i in range(4):
+		s = 0
+		for j in cards[i*13:(i+1)*13]:
+			s += getPoint(j.rank)
+		if s < 4:
+			return True
+	return False
 
 
 
