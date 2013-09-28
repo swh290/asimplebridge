@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  {% load socketio_tags %}
+  {% socketio %}
+    <script>
+        var socket = new io.Socket();
+        socket.connect();
+        console.log(socket);
+    </script>
+  <p>Hi {{ userName }}</p>
+  <span>in Lobby</span>
+{% endblock %}
