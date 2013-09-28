@@ -121,6 +121,7 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     # "../asimplebridge/asimplebridge/templates",
     os.path.join(PROJECT_ROOT, "templates"),
+    os.path.join(PROJECT_ROOT, "../*/templates"),
 )
 
 INSTALLED_APPS = (
@@ -136,6 +137,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'gunicorn',
     'south',
+    'django_socketio',
 
     'account',
     'game',

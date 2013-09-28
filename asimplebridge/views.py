@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 def home(request):
   if request.user.is_authenticated():
     userName = request.user
-    return render(request, 'homepage.html', locals())
+    return render(request, 'lobby.html', locals())
   else:
     return render(request, 'login.html', locals())
 
