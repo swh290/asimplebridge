@@ -6,13 +6,6 @@ html, body
     height:100%;
 }
 
-.l_content
-{
-  left: 40%;
-  top: 50px;
-  position: relative;
-}
-
 form
 {
   position: absolute;
@@ -81,3 +74,37 @@ footer
   top: 400px;
   left: 200px;
 }
+
+.l_container
+{
+  width: 100%;
+  margin-top: 50px;
+}
+
+.l_top
+{
+  min-height: 150px;
+  background: wheat;
+}
+
+.l_bottom-left
+{
+  min-height: 480px;
+  width: 35%;
+  float: left;
+  background: #F6D8CE;
+}
+
+.l_bottom-right
+{
+  min-height: 480px;
+  width: 65%;
+  float: right;
+  background: #D8CEF6;
+}
+
+.l_bottom
+{
+  background: red;
+}
+
