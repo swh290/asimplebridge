@@ -2,11 +2,45 @@
 {% block content %}
   {% load socketio_tags %}
   {% socketio %}
-    <script>
+    
+  <p>Hi {{ userName }}</p>
+  <span>in Lobby</span>
+  <div>
+    <a href="#" id="messageTest">Message Test</a>
+  </div>
+  <ul class='log'>
+  </ul>
+  <textarea id='typeIn'></textarea>
+  <button id='sendBtn'>Send</button>
+  <script>
         var socket = new io.Socket();
         socket.connect();
         console.log(socket);
-    </script>
-  <p>Hi {{ userName }}</p>
-  <span>in Lobby</span>
+        socket.on('connect', function() {
+            socket.subscribe('room-1');
+        });
+        $('#messageTest').click(function(){
+          var request = {
+            action: 'add',
+            option: 1,
+            message: 'test for jason'
+          };
+          socket.send(JSON.stringify(request));
+        });
+        $('#sendBtn').click(function(){
+          var data = {
+            action: 'chat',
+            author: "{{userName}}",
+            message: $('#typeIn').val(),
+          };
+          socket.send(JSON.stringify(data));
+        });
+        socket.on('message', function(message){
+          var jsonResponse = JSON.parse(message);
+          if(jsonResponse.action == 'chat')
+            $('.log').append("<li>"+ jsonResponse.author +": "+ jsonResponse.message + "</li>");
+          else
+            console.log(jsonResponse);
+        });
+  </script>
 {% endblock %}

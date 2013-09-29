@@ -22,3 +22,6 @@ BootStrap
 [http://asimplebridge.herokuapp.com/](http://asimplebridge.herokuapp.com/)
 ###App on Facebook
 [https://apps.facebook.com/365206773554073/](https://apps.facebook.com/365206773554073/)
+
+###django-socketio
+[https://github.com/stephenmcd/django-socketio](https://github.com/stephenmcd/django-socketio)
