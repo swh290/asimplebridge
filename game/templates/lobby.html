@@ -6,15 +6,15 @@
   
   <div class='l_container'>
     <div class='l_top'></div>
-    <div class='l_bottom'>
+    <div class='l_bottom clearfix'>
       <div class='l_bottom-left'>
         <div class='l_friend-list'></div>
         <div class='l_chat-panel'>
-          <ul class='log'>
+          <ul class='log l_message-list'>
           </ul>
-          <textarea id='typeIn'></textarea>
-          <div>
-            <button id='sendBtn' data-username="{{ userName }}">Send</button>
+          <textarea id='typeIn' class='form-control message-field' style='height: 30px;'></textarea>
+          <div class='sendBtn'>
+            <button id='sendBtn' class='btn btn-sm btn-success' data-username="{{ userName }}">Send</button>
           </div>
         </div>
       </div>

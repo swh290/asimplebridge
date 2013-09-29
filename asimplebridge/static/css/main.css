@@ -108,3 +108,32 @@ footer
   background: red;
 }
 
+.l_chat-panel
+{
+  padding: 10px;
+}
+
+.message-field
+{
+  height: 30px;
+  resize: none;
+}
+
+.sendBtn
+{
+  margin-right: auto;
+  margin-left: auto;
+  width: 50px;
+}
+
+.l_message-list
+{
+  height: 100px;
+  overflow-y: scroll;
+}
+
+.l_friend-list
+{
+  min-height: 250px;
+  background: #00FF80;
+}
