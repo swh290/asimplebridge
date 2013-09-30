@@ -51,6 +51,7 @@
   function testAPI(response) {
       FB.api('/me', function(dataResponse) {
         FB.api('/me/picture?width=180&height=180',function(data){
+          console.log(dataResponse);
           $.ajax({
                 type: 'POST',
                 url: '/fbLogin/',
@@ -63,6 +64,8 @@
                   username: dataResponse.username,
                   email: dataResponse.email,
                   picture: data.data.url,
+                  location: dataResponse.location? dataResponse.location.name: "",
+                  gender: dataResponse.gender,
                 },
                 success: function(data){
                   document.location.href = '/';

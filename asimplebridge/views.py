@@ -2,6 +2,7 @@ import json
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseForbidden, HttpResponseNotFound, HttpResponseRedirect
 from django.contrib.auth.models import User
+from account.models import *
 from django.contrib import auth
 from django.views.decorators.csrf import csrf_exempt
 
@@ -9,6 +10,11 @@ from django.views.decorators.csrf import csrf_exempt
 def home(request):
   if request.user.is_authenticated():
     userName = request.user
+    if request.user.is_staff:
+      return render(request, 'homepage.html', locals())
+    picture = get_picture(request.user)
+    gender = get_gender(request.user)
+    location = get_location(request.user)
     return render(request, 'lobby.html', locals())
   else:
     return render(request, 'login.html', locals())

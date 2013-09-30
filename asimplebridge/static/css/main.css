@@ -115,8 +115,9 @@ footer
 
 .message-field
 {
-  height: 30px;
   resize: none;
+  width: 80%;
+  display: inline;
 }
 
 .sendBtn
@@ -128,7 +129,7 @@ footer
 
 .l_message-list
 {
-  height: 100px;
+  height: 125px;
   overflow-y: scroll;
 }
 
@@ -136,4 +137,22 @@ footer
 {
   min-height: 250px;
   background: #00FF80;
+}
+
+.l_user-profile
+{
+  width: 35%;
+  float: left;
+  padding: 10px;
+}
+
+.l_user-picture
+{
+  width: 120px;
+  height: 120px;
+}
+
+.l_user-data
+{
+  display: inline-block;
 }

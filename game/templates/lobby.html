@@ -5,7 +5,20 @@
     
   
   <div class='l_container'>
-    <div class='l_top'></div>
+    <div class='l_top clearfix'>
+      <div class='l_user-profile'>
+        <img class='l_user-picture' src="{{ picture }}">
+        <ul class='l_user-data'>
+          <li>{{userName}}</li>
+          {% if gender != 'unknown' %}
+            <li>{{gender}}</li>
+          {% endif %}
+          {% if location != '' %}
+            <li>{{location}}</li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
     <div class='l_bottom clearfix'>
       <div class='l_bottom-left'>
         <div class='l_friend-list'></div>
@@ -13,9 +26,7 @@
           <ul class='log l_message-list'>
           </ul>
           <textarea id='typeIn' class='form-control message-field' style='height: 30px;'></textarea>
-          <div class='sendBtn'>
-            <button id='sendBtn' class='btn btn-sm btn-success' data-username="{{ userName }}">Send</button>
-          </div>
+          <button id='sendBtn' class='btn btn-sm btn-success' data-username="{{ userName }}">Send</button>
         </div>
       </div>
       <div class='l_bottom-right'>

@@ -3,6 +3,6 @@ from django.http import HttpResponse, HttpResponseForbidden, HttpResponseNotFoun
 from django_socketio import events
 import django_socketio
 
-@events.on_message(channel="^room-")
+@events.on_message(channel="lobby")
 def my_chat_handler(request, socket, context, message):
-  django_socketio.broadcast_channel(message, 'room-1')
+  django_socketio.broadcast_channel(message, 'lobby')

@@ -19,12 +19,14 @@ def fbLogin(request):
     username = request.POST.get("username")
     email = request.POST.get('email')
     picture = request.POST.get('picture')
+    location = request.POST.get('location')
+    gender = request.POST.get('gender')
     # need to generate hash password
     password = '123456'
 
     user = UserProfile.objects.filter(fbId = fbId)
     if len(user) == 0:
-      user = fbRegister(user, fbId, fbAccessToken, username, password, first_name, last_name, email, picture)
+      user = fbRegister(user, fbId, fbAccessToken, username, password, first_name, last_name, email, picture, location, gender)
     else:
       loginUser = auth.authenticate(username=username, password=password)
       if loginUser is not None:
@@ -35,7 +37,7 @@ def fbLogin(request):
 
   return HttpResponse( json.dumps(response_data))
 
-def fbRegister(user, fbId, fbAccessToken, username, password, first_name, last_name, email, picture):
+def fbRegister(user, fbId, fbAccessToken, username, password, first_name, last_name, email, picture, location, gender):
   user = User.objects.create(username=username)
   user.first_name = first_name
   user.last_name = last_name
@@ -43,5 +45,5 @@ def fbRegister(user, fbId, fbAccessToken, username, password, first_name, last_n
   
   user.set_password(password)
   user.save()
-  create_userProfile(user, fbId, fbAccessToken, picture)
+  create_userProfile(user, fbId, fbAccessToken, picture, location, gender)
   return user
