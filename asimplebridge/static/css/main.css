@@ -94,7 +94,7 @@ footer
 
 .l_bottom-left
 {
-  min-height: 480px;
+  min-height: 440px;
   width: 35%;
   float: left;
   padding: 10px;
@@ -102,7 +102,7 @@ footer
 
 .l_bottom-right
 {
-  min-height: 480px;
+  min-height: 440px;
   width: 65%;
   float: right;
   padding: 10px;
@@ -142,7 +142,7 @@ footer
 
 .l_friend-list
 {
-  min-height: 250px;
+  min-height: 210px;
   /*background: #00FF80;*/
   padding: 10px;
 }
@@ -175,5 +175,5 @@ footer
 
 .l_room-list
 {
-  min-height: 400px;
+  min-height: 360px;
 }
