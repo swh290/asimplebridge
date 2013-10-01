@@ -15,6 +15,8 @@ def home(request):
     picture = get_picture(request.user)
     gender = get_gender(request.user)
     location = get_location(request.user)
+    friends = []
+    friendNum = len(friends)
     return render(request, 'lobby.html', locals())
   else:
     return render(request, 'login.html', locals())

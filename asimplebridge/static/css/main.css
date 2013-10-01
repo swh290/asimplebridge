@@ -12,6 +12,11 @@ form
   top: 50px;
 }
 
+.passiveGray
+{
+  color: #EAEAEA;
+}
+
 .s_logout
 {
   color: white;
@@ -92,7 +97,7 @@ footer
   min-height: 480px;
   width: 35%;
   float: left;
-  background: #F6D8CE;
+  padding: 10px;
 }
 
 .l_bottom-right
@@ -100,23 +105,23 @@ footer
   min-height: 480px;
   width: 65%;
   float: right;
-  background: #D8CEF6;
+  padding: 10px;
 }
 
 .l_bottom
 {
-  background: red;
+  /*background: red;*/
 }
 
 .l_chat-panel
 {
-  padding: 10px;
+  /*padding: 10px;*/
 }
 
 .message-field
 {
   resize: none;
-  width: 80%;
+  width: 82%;
   display: inline;
 }
 
@@ -131,12 +136,15 @@ footer
 {
   height: 125px;
   overflow-y: scroll;
+  list-style-type: none;
+  padding-left: 5px;
 }
 
 .l_friend-list
 {
   min-height: 250px;
-  background: #00FF80;
+  /*background: #00FF80;*/
+  padding: 10px;
 }
 
 .l_user-profile
@@ -155,4 +163,17 @@ footer
 .l_user-data
 {
   display: inline-block;
+}
+
+.l_no-friend-lable
+{
+  display: block;
+  width: 100px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.l_room-list
+{
+  min-height: 400px;
 }

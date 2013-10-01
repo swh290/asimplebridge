@@ -21,16 +21,20 @@
     </div>
     <div class='l_bottom clearfix'>
       <div class='l_bottom-left'>
-        <div class='l_friend-list'></div>
+        <div class='l_friend-list panel panel-primary'>
+          {% if friendNum == 0 %}
+            <span class='passiveGray l_no-friend-lable'>No friends</span>
+          {% endif %}
+        </div>
         <div class='l_chat-panel'>
-          <ul class='log l_message-list'>
+          <ul class='log l_message-list panel panel-default'>
           </ul>
           <textarea id='typeIn' class='form-control message-field' style='height: 30px;'></textarea>
           <button id='sendBtn' class='btn btn-sm btn-success' data-username="{{ userName }}">Send</button>
         </div>
       </div>
       <div class='l_bottom-right'>
-        <div class='l_room-list'></div>
+        <div class='l_room-list panel panel-success'></div>
       </div>
     </div>
   </div>
