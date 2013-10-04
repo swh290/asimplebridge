@@ -1,1 +1,1 @@
-web: python asimplebridge/manage.py runserver_socketio
+web: python manage.py runserver_socketio
