@@ -1,5 +1,5 @@
 var socket = new io.Socket();
-socket.connect();
+socket.connect("http://asimplebridge.herokuapp.com:9000/");
 socket.on('connect', function() {
     socket.subscribe('lobby');
 });
