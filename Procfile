@@ -1,2 +1,1 @@
-web: gunicorn asimplebridge.wsgi
-init: python manage.py runserver_socketio
+web: python asimplebridge/manage.py runserver_socketio
