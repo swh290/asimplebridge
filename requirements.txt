@@ -8,3 +8,6 @@ static==0.4
 wsgiref==0.1.2
 South==0.7.3
 django-socketio==0.3.8
+gevent==0.13.8
+gevent-socketio==0.2.1
+gevent-websocket==0.3.6
