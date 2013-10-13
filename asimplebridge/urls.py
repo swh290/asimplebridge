@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     url(r'^logout/', logout, name='logout'),
     url(r'^register/', register, name='register'),
     url(r'^fbLogin/', fbLogin, name='fbLogin'),
-    url("", include('django_socketio.urls')),
+    url(r'^node_api$', node_api, name='node_api'),
+    # url("", include('django_socketio.urls')),
     
 )+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
